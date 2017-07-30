@@ -2,7 +2,7 @@ package com.interview.ticket.booking.engine;
 
 import com.interview.ticket.booking.model.BaseReservationRequest;
 
-public interface BookingEngine {
+public interface BookingEngine<T extends BaseReservationRequest> {
     /* Process the incoming reservation request */
-    String processReservationRequest(BaseReservationRequest reservationRequest);
+    String processReservationRequest(T reservationRequest);
 }

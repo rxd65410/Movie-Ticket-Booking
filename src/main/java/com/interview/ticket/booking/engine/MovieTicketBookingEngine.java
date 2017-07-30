@@ -3,6 +3,7 @@ package com.interview.ticket.booking.engine;
 
 import com.interview.ticket.booking.dao.WriteOutputFile;
 import com.interview.ticket.booking.model.BaseReservationRequest;
+import com.interview.ticket.booking.model.MovieReservationRequest;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Map;
 /**
  * Created by r0d00e4 on 7/28/17.
  */
-public class MovieTicketBookingEngine implements BookingEngine{
+public class MovieTicketBookingEngine implements BookingEngine<MovieReservationRequest>{
     private static final int NUM_OF_ROWS = 10;
     private static final int NUM_OF_SEATS_PER_ROW = 20;
     private static final String SEATS_NOT_AVAILABLE = "No Seats Available";
@@ -37,9 +38,8 @@ public class MovieTicketBookingEngine implements BookingEngine{
         return movieTicketBookingEngine;
     }
     @Override
-    public String processReservationRequest(BaseReservationRequest movieReservationRequest){
+    public String processReservationRequest(MovieReservationRequest movieReservationRequest){
 
-        System.out.print("base reservation req is " + movieReservationRequest);
         String seatNumbers = SEATS_NOT_AVAILABLE;
 
         //Check if we have enough seats before processing request.
@@ -97,9 +97,5 @@ public class MovieTicketBookingEngine implements BookingEngine{
             if(i<endIndex-1) output.append(",");
         }
         return output.toString();
-    }
-
-    public int getTotalNumOfSeatsAvailable() {
-        return totalNumOfSeatsAvailable;
     }
 }

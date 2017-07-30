@@ -38,8 +38,8 @@ public class ParseInputFile {
             String[] tokens = request.split(REQUEST_DELIMITER);
             if(tokens.length==2 && tokens[0]!=null && tokens[1]!=null){
                 BaseReservationRequest reservationRequest =
-                        new MovieReservationRequest(tokens[0],Integer.valueOf(tokens[1]),"THEATER",new Date());
-                String bookingResponse = bookingEngine.processReservationRequest(reservationRequest);
+                        new MovieReservationRequest(tokens[0],Integer.valueOf(tokens[1]));
+                bookingEngine.processReservationRequest(reservationRequest);
             }
         }
     }
