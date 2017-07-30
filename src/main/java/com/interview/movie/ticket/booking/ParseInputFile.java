@@ -1,26 +1,25 @@
 package com.interview.movie.ticket.booking;
 
-import org.apache.commons.lang.StringUtils;
+import com.interview.movie.ticket.model.BaseReservationRequest;
+import com.interview.movie.ticket.model.MovieReservationRequest;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by r0d00e4 on 7/27/17.
  */
 public class ParseInputFile {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ParseInputFile.class);
     private static final String VALID_REQUEST = "R";
     private static final String REQUEST_DELIMITER = " ";
     private final BookingEngine bookingEngine;
 
-    public ParseInputFile() {
-        this.bookingEngine = BookingEngine.getInstance();;
+    public ParseInputFile() throws IOException {
+        this.bookingEngine = MovieTicketBookingEngine.getInstance();
     }
 
     /*Process the input file for Reservation Requests.*/
@@ -35,12 +34,12 @@ public class ParseInputFile {
     }
 
     private void parseReservationRequest(String request) {
-        if(!StringUtils.isEmpty(request)){
+        if(request!=null && request.length()>0){
             String[] tokens = request.split(REQUEST_DELIMITER);
-            if(tokens.length==2 && !StringUtils.isEmpty(tokens[0]) && !StringUtils.isEmpty(tokens[1])){
-                ReservationRequest reservationRequest = new ReservationRequest(tokens[0],Integer.valueOf(tokens[1]));
+            if(tokens.length==2 && tokens[0]!=null && tokens[1]!=null){
+                BaseReservationRequest reservationRequest =
+                        new MovieReservationRequest(tokens[0],Integer.valueOf(tokens[1]),"THEATER",new Date());
                 String bookingResponse = bookingEngine.processReservationRequest(reservationRequest);
-                System.out.println(reservationRequest.getRequestId()+" "+bookingResponse);
             }
         }
     }
