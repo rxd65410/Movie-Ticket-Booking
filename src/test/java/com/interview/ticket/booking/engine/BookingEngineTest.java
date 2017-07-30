@@ -28,6 +28,7 @@ public class BookingEngineTest {
         assertEquals("J1,J2,J3",seatNumbers);
     }
 
+    /* test to book multiple rows */
     @Test
     public void testBookAcrossRows() throws IOException {
         Map<Integer,Integer> seatsAvailable = new HashMap<>();
