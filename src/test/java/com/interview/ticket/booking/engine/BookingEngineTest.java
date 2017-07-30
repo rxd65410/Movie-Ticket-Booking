@@ -35,6 +35,7 @@ public class BookingEngineTest {
         verify(writeOutputFile,times(1)).writeOutput("RTEST1 J1,J2,J3");
     }
 
+    /* test to book multiple rows */
     @Test
     public void testBookAcrossRows() throws IOException {
         Map<Integer,Integer> seatsAvailable = new HashMap<>();
