@@ -18,10 +18,13 @@ public class ParseInputFile {
     private static final String REQUEST_DELIMITER = " ";
     private final BookingEngine<MovieReservationRequest> bookingEngine;
 
-    public ParseInputFile() throws IOException {
+    public ParseInputFile() {
         this.bookingEngine = MovieTicketBookingEngine.getInstance();
     }
 
+    public ParseInputFile(BookingEngine<MovieReservationRequest> bookingEngine){
+        this.bookingEngine = bookingEngine;
+    }
     /*Process the input file for Reservation Requests.*/
     public void processInputFile(String fileName){
         try {
@@ -34,7 +37,7 @@ public class ParseInputFile {
         }
     }
 
-    private void parseReservationRequest(String request) {
+    protected void parseReservationRequest(String request) {
         if(request!=null && request.length()>0){
             String[] tokens = request.split(REQUEST_DELIMITER);
             if(tokens.length==2 && tokens[0]!=null && tokens[1]!=null){
