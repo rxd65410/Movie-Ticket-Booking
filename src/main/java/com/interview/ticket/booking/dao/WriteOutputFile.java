@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import org.apache.commons.lang.StringUtils;
 
 public class WriteOutputFile {
     private static final String OUTPUT_FILENAME = "output.txt";
@@ -16,11 +15,11 @@ public class WriteOutputFile {
             Files.delete(Paths.get(OUTPUT_FILE_PATH));
         }
         Files.createFile(Paths.get(OUTPUT_FILE_PATH));
-        System.out.println("Please find the engine information at " + OUTPUT_FILE_PATH);
+        System.out.println("Please find the booking information at " + OUTPUT_FILE_PATH);
     }
 
     public void writeOutput(String line){
-        if(StringUtils.isEmpty(line)){
+        if(line!=null && line.length()>0){
             try {
                 BufferedWriter writer = Files.newBufferedWriter(Paths.get(OUTPUT_FILE_PATH), StandardOpenOption.APPEND);
                 writer.append(line);
