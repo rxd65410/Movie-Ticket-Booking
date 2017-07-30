@@ -1,5 +1,7 @@
-package com.interview.ticket.booking.engine;
+package com.interview.ticket.booking.dao;
 
+import com.interview.ticket.booking.engine.BookingEngine;
+import com.interview.ticket.booking.engine.MovieTicketBookingEngine;
 import com.interview.ticket.booking.model.BaseReservationRequest;
 import com.interview.ticket.booking.model.MovieReservationRequest;
 
@@ -28,7 +30,7 @@ public class ParseInputFile {
             //filter only valid reservation requests which starts with R###.
             stream.filter(request -> request.startsWith(VALID_REQUEST)).forEach(request -> parseReservationRequest(request));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to process input file : " + fileName + "\n"+ e);
         }
     }
 

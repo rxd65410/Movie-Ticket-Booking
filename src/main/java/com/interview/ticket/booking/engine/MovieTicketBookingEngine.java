@@ -29,6 +29,7 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
         for(int i=0;i<NUM_OF_ROWS;i++){
             seatsAvailable.put(i,NUM_OF_SEATS_PER_ROW);
         }
+        System.out.println("Movie ticket booking engine initialized successfully.");
     }
 
     public static MovieTicketBookingEngine getInstance() throws IOException {
