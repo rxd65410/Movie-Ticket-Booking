@@ -1,8 +1,8 @@
-package com.interview.movie.ticket.booking;
+package com.interview.ticket.booking.engine;
 
 
-import com.interview.movie.ticket.dao.WriteOutputFile;
-import com.interview.movie.ticket.model.BaseReservationRequest;
+import com.interview.ticket.booking.dao.WriteOutputFile;
+import com.interview.ticket.booking.model.BaseReservationRequest;
 
 import java.io.IOException;
 import java.util.HashMap;

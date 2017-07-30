@@ -1,6 +1,6 @@
-package com.interview.movie.ticket.booking;
+package com.interview.ticket.booking.engine;
 
-import com.interview.movie.ticket.model.BaseReservationRequest;
+import com.interview.ticket.booking.model.BaseReservationRequest;
 
 public interface BookingEngine {
     /* Process the incoming reservation request */

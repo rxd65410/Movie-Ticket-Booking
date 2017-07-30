@@ -1,7 +1,7 @@
-package com.interview.movie.ticket.booking;
+package com.interview.ticket.booking.engine;
 
-import com.interview.movie.ticket.model.BaseReservationRequest;
-import com.interview.movie.ticket.model.MovieReservationRequest;
+import com.interview.ticket.booking.model.BaseReservationRequest;
+import com.interview.ticket.booking.model.MovieReservationRequest;
 
 import java.io.IOException;
 import java.nio.file.Files;

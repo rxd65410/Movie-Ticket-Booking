@@ -1,7 +1,7 @@
-package com.interview.movie.ticket;
+package com.interview.ticket.booking;
 
-import com.interview.movie.ticket.booking.ParseInputFile;
-import com.interview.movie.ticket.exception.ArgumentsMissingException;
+import com.interview.ticket.booking.exception.ArgumentsMissingException;
+import com.interview.ticket.booking.engine.ParseInputFile;
 
 import java.io.IOException;
 

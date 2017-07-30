@@ -1,4 +1,4 @@
-package com.interview.movie.ticket.model;
+package com.interview.ticket.booking.model;
 
 public class BaseReservationRequest {
     private String requestId;
