@@ -1,5 +1,6 @@
 package com.interview.ticket.booking.engine;
 
+import com.interview.ticket.booking.exception.WriteOutputException;
 import com.interview.ticket.booking.model.BaseReservationRequest;
 
 public interface BookingEngine<T extends BaseReservationRequest> {

@@ -26,7 +26,6 @@ public class ProgramStarter {
            System.out.println("Start processing the reservation request file.");
             ParseInputFile parseInputFile = new ParseInputFile();
             parseInputFile.processInputFile(fileName);
-            System.out.println("Please find the booking information at "+ WriteOutputFile.OUTPUT_FILE_PATH);
         }
     }
 }

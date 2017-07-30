@@ -2,6 +2,7 @@ package com.interview.ticket.booking.engine;
 
 
 import com.interview.ticket.booking.dao.WriteOutputFile;
+import com.interview.ticket.booking.exception.WriteOutputException;
 import com.interview.ticket.booking.model.BaseReservationRequest;
 import com.interview.ticket.booking.model.MovieReservationRequest;
 
@@ -18,13 +19,13 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
     private static final String SEATS_NOT_AVAILABLE = "No Seats Available";
 
     private static MovieTicketBookingEngine movieTicketBookingEngine;
-    private static WriteOutputFile writeOutputFile;
+    private WriteOutputFile writeOutputFile;
     private int totalNumOfSeatsAvailable = NUM_OF_ROWS * NUM_OF_SEATS_PER_ROW;
     private Map<Integer,Integer> seatsAvailable;
 
 
     private MovieTicketBookingEngine() throws IOException {
-        writeOutputFile = new WriteOutputFile();
+        //writeOutputFile = new WriteOutputFile();
         seatsAvailable = new HashMap<>();
         for(int i=0;i<NUM_OF_ROWS;i++){
             seatsAvailable.put(i,NUM_OF_SEATS_PER_ROW);
@@ -38,8 +39,9 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
         }
         return movieTicketBookingEngine;
     }
+
     @Override
-    public String processReservationRequest(MovieReservationRequest movieReservationRequest){
+    public String processReservationRequest(MovieReservationRequest movieReservationRequest) {
 
         String seatNumbers = SEATS_NOT_AVAILABLE;
 
@@ -52,7 +54,7 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
                     seatNumbers = bookSeats(entry.getKey(), entry.getValue(), movieReservationRequest.getNumberOfSeats());
                     seatsAvailable.put(entry.getKey(), entry.getValue() - movieReservationRequest.getNumberOfSeats());
                     totalNumOfSeatsAvailable -= movieReservationRequest.getNumberOfSeats();
-                    writeOutputFile.writeOutput(movieReservationRequest.getRequestId()+" "+seatNumbers);
+                    WriteOutputFile.getWriteOutputFileInstance().writeOutput(movieReservationRequest.getRequestId()+" "+seatNumbers);
                     return seatNumbers;
                 }
             }
@@ -80,9 +82,13 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
             seatsNeed -= book;
             totalNumOfSeatsAvailable -= book;
             seatsAvailable.put(entry.getKey(), entry.getValue() - book);
-            if(seatsNeed==0) break;
+            if(seatsNeed==0){
+                break;
+            }else{
+                seatNumbers.append(",");
+            }
         }
-        writeOutputFile.writeOutput(movieReservationRequest.getRequestId()+" "+seatNumbers);
+        WriteOutputFile.getWriteOutputFileInstance().writeOutput(movieReservationRequest.getRequestId()+" "+seatNumbers);
         return seatNumbers.toString();
     }
 
@@ -98,5 +104,13 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
             if(i<endIndex-1) output.append(",");
         }
         return output.toString();
+    }
+
+    public Map<Integer, Integer> getSeatsAvailable() {
+        return seatsAvailable;
+    }
+
+    public void setSeatsAvailable(Map<Integer, Integer> seatsAvailable) {
+        this.seatsAvailable = seatsAvailable;
     }
 }
