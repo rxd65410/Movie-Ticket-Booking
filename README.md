@@ -7,18 +7,18 @@ Instructions on how to compile/run this program using terminal.
 
 Implementation Details :
 Design should be in such a way that it will be easy to extend this module to support Air Ticket booking, Bus Ticketing booking or any other ticket booking project in future.
-1) ProgramStarter - Execution starts here. Class with Main function and validates the input arguments.
+1) ProgramStarter.java - Execution starts here. Class with Main function and validates the input arguments.
 2) com.interview.ticket.booking.model
-    BaseReservationRequest - Base model class for all reservation request. This model class contains RequestId, NumberOfSeats. In future, if you want to extend this project for Air ticket booking, we need to extend this base class and add few extra fields in child model class.
-    MovieReservationRequest - This needs to extend BaseReservationRequest model class. As of now this is be same as Base class. We can add few details like TheaterName, Movietiming....
+    * BaseReservationRequest.java - Base model class for all reservation request. This model class contains RequestId, NumberOfSeats. In future, if you want to extend this project for Air ticket booking, we need to extend this base class and add few extra fields in child model class.
+    * MovieReservationRequest.java - This needs to extend BaseReservationRequest model class. As of now this is be same as Base class. We can add few details like TheaterName, Movietiming....
 3) com.interview.ticket.booking.engine
-    * BookingEngine - This is a Interface which can process any kind of ReservationRequest like MovieReservationRequest or AirTicketReservtionRequest.
-    * MovieTicketBookingEngine (Singleton)- Implementation of BookingEngine. This is used to process MovieReservationRequest which comes from Inputfile.
+    * BookingEngine.java - This is a Interface which can process any kind of ReservationRequest like MovieReservationRequest or AirTicketReservtionRequest.
+    * MovieTicketBookingEngine.java (Singleton)- Implementation of BookingEngine. This is used to process MovieReservationRequest which comes from Inputfile.
     * HashMap<Integer, Integer> tracks all available seats per row.
 4) com.interview.ticket.booking.dao
-    * ParseInputFile - Parses the input file which contains ReservationRequests and send these requests to booking engine.
-    * WriteOutputFile - Once BookingEngine confirms the seats, it will send the booking confirmation to this doa.
-    * WriteOutput and ParseInput logic should be separated from Booking engine code. This will make life easy in future, if you want to use database instead of file.
+    * ParseInputFile.java - Parses the input file which contains ReservationRequests and send these requests to booking engine.
+    * WriteOutputFile.java - Once BookingEngine confirms the seats, it will send the booking confirmation to this doa.
+    * WriteOutput/ParseInput logic should be separated from Booking engine code. This will make life easy in future, if you want to use database instead of file.
 
 
 
