@@ -26,7 +26,7 @@ public class ParseInputFileTest {
 
     @Test
     public void testProcessInputFile(){
-        String intputFile = Resources.getResource("movie-reservation-request").getFile();
+        String intputFile = Resources.getResource("movie-reservation-requests").getFile();
         parseInputFile.processInputFile(intputFile);
         verify(bookingEngine,times(4)).processReservationRequest(any());
     }

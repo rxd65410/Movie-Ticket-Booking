@@ -23,7 +23,7 @@ public class ProgramStarter {
 
 
         if(fileName!=null && fileName.length()>0){
-           System.out.println("Start processing the reservation request file.");
+           System.out.println("Start processing the reservation requests file : "+fileName);
             ParseInputFile parseInputFile = new ParseInputFile();
             parseInputFile.processInputFile(fileName);
         }

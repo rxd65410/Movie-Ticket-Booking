@@ -29,9 +29,12 @@ public class ParseInputFile {
     public void processInputFile(String fileName){
         try {
             Stream<String> stream = Files.lines(Paths.get(fileName));
+
             //filter only valid reservation requests which starts with R###.
             stream.filter(request -> request.startsWith(VALID_REQUEST)).forEach(this::parseReservationRequest);
+
             System.out.println("Please find the booking information at "+ WriteOutputFile.OUTPUT_FILE_PATH);
+
         } catch (IOException e) {
             System.out.println("Failed to process input file : " + fileName + "\n"+ e);
         }
