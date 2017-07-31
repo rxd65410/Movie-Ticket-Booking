@@ -9,8 +9,8 @@ Implementation Details :
 Design should be in such a way that it will be easy to extend this module to support Air Ticket booking, Bus Ticketing booking or any other ticket booking project in future.
 1) ProgramStarter.java - Execution starts here. Class with Main function and validates the input arguments.
 2) com.interview.ticket.booking.model
-    * BaseReservationRequest.java - Base model class for all reservation request. This model class contains RequestId, NumberOfSeats. In future, if you want to extend this project for Air ticket booking, we need to extend this base class and add few extra fields in child model class.
-    * MovieReservationRequest.java - This needs to extend BaseReservationRequest model class. As of now this is be same as Base class. We can add few details like TheaterName, Movietiming....
+    * BaseReservationRequest.java - Base model class for all reservation request. This model class contains RequestId, NumberOfSeats. In future, if you want to implement Air ticket booking, then we need new model class which extends this base class.
+    * MovieReservationRequest.java - This needs to extend BaseReservationRequest model class. As of now this is same as Base class. We can add few details like TheaterName, Movietiming....
 3) com.interview.ticket.booking.engine
     * BookingEngine.java - This is a Interface which can process any kind of ReservationRequest like MovieReservationRequest or AirTicketReservtionRequest.
     * MovieTicketBookingEngine.java (Singleton)- Implementation of BookingEngine. This is used to process MovieReservationRequest which comes from Inputfile.
@@ -27,6 +27,6 @@ Assumptions :
 1) Valid reservation requestId should start with "R". RequestId and number of seats should be delimited with space.
 2) Booking happens in first come first serve basis.
 3) Booking starts from first row [away from screen].
-4) Each request will be assigned consecutive seats in single row.
+4) Each request will be assigned consecutive seats in a single row.
 5) If seats are not available in one single row then seats accross multiple rows will be booked.
   
