@@ -1,8 +1,7 @@
 package com.interview.ticket.booking;
 
-import com.interview.ticket.booking.dao.WriteOutputFile;
 import com.interview.ticket.booking.exception.ArgumentsMissingException;
-import com.interview.ticket.booking.dao.ParseInputFile;
+import com.interview.ticket.booking.dao.ParseMovieInputFile;
 
 import java.io.IOException;
 
@@ -24,8 +23,8 @@ public class ProgramStarter {
 
         if(fileName!=null && fileName.length()>0){
            System.out.println("Start processing the reservation requests file : "+fileName);
-            ParseInputFile parseInputFile = new ParseInputFile();
-            parseInputFile.processInputFile(fileName);
+            ParseMovieInputFile parseMovieInputFile = new ParseMovieInputFile();
+            parseMovieInputFile.processInputFile(fileName);
         }
     }
 }

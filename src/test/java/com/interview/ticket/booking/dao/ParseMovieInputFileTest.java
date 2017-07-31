@@ -15,19 +15,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ParseInputFileTest {
+public class ParseMovieInputFileTest {
     @Mock private BookingEngine<MovieReservationRequest> bookingEngine ;
-    @InjectMocks private ParseInputFile parseInputFile;
+    @InjectMocks private ParseMovieInputFile parseMovieInputFile;
 
     @Before
     public void init() {
-        parseInputFile = new ParseInputFile(bookingEngine);
+        parseMovieInputFile = new ParseMovieInputFile(bookingEngine);
     }
 
     @Test
     public void testProcessInputFile(){
         String intputFile = Resources.getResource("movie-reservation-requests").getFile();
-        parseInputFile.processInputFile(intputFile);
+        parseMovieInputFile.processInputFile(intputFile);
         verify(bookingEngine,times(4)).processReservationRequest(any());
     }
 }

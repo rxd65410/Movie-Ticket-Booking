@@ -91,6 +91,7 @@ public class MovieTicketBookingEngine implements BookingEngine<MovieReservationR
 
     private String bookSeats(Integer bookInRow, Integer seatsAvailable, int numberOfSeatsRequested) {
 
+
         int startIndex = NUM_OF_SEATS_PER_ROW-seatsAvailable+1;
         int endIndex = startIndex+numberOfSeatsRequested;
         char row = (char) ('A' + NUM_OF_ROWS - bookInRow - 1);
