@@ -5,7 +5,7 @@ Instructions on how to compile/run this program using terminal.
    * step 2: mvn clean install
    * step 3: java -jar target/MovieTicketBooking-1.0-SNAPSHOT.jar [Reservation Requests File]
 
-Implementation Details :
+Implementation Details:
 Design should be in such a way that it will be easy to extend this module to support Air Ticket booking, Bus Ticketing booking or any other ticket booking project in future.
 1) ProgramStarter.java - Execution starts here. Class with Main function and validates the input arguments.
 2) com.interview.ticket.booking.model
